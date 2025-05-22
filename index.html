@@ -5,198 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Skill Tutorials Blog</title>
 <style>
-  /* Reset & base */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    background: #0d1117;
-    color: #c9d1d9;
-    line-height: 1.6;
-    display: flex;
-    min-height: 100vh;
-  }
+  /* (keep your existing CSS, I’ll only add minimal styles for content switching) */
 
-  /* Sidebar */
-  .sidebar {
-    width: 280px;
-    border-right: 1px solid #30363d;
-    padding: 1.5rem 1.25rem;
-    background: #0d1117;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .sidebar h2 {
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #c9d1d9;
-  }
-
-  /* Dropdown container */
-  .dropdown {
-    cursor: pointer;
-    user-select: none;
-  }
-  .dropdown-title {
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.5rem 0;
-    color: #c9d1d9;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-  }
-  .dropdown-title:hover {
-    background-color: #161b22;
-    text-decoration: none;
-  }
-
-  /* Caret icon */
-  .caret {
-    transition: transform 0.3s ease;
-    font-size: 1rem;
-    color: #8b949e;
-    user-select: none;
-  }
-  .dropdown.active .caret {
-    transform: rotate(90deg);
-    color: #58a6ff;
-  }
-
-  /* Dropdown list */
-  ul {
-    list-style: none;
-    padding-left: 1rem;
-    margin-top: 0.25rem;
+  /* Hide all tutorial sections by default */
+  .tutorial-content {
     display: none;
   }
-  .dropdown.active ul {
+  /* Show active tutorial */
+  .tutorial-content.active {
     display: block;
-  }
-  ul li {
-    padding: 0.3rem 0;
-    color: #8b949e;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-  ul li:hover {
-    background-color: #161b22;
-    color: #58a6ff;
-  }
-
-  /* Instagram credit in sidebar */
-  .sidebar a.credit {
-    font-size: 0.875rem;
-    color: #57606a;
-    text-decoration: none;
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid #30363d;
-  }
-  .sidebar a.credit:hover {
-    text-decoration: underline;
-  }
-
-  /* Main content */
-  .main-content {
-    flex: 1;
-    padding: 2rem 3rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .main-content h1 {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #c9d1d9;
-  }
-  .main-content h6 {
-    color: #8b949e;
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-  .main-content h6 a {
-    color: #58a6ff;
-    text-decoration: none;
-  }
-  .main-content h6 a:hover {
-    text-decoration: underline;
-  }
-
-  /* Tutorial cards */
-  .tutorial {
-    border: 1px solid #30363d;
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.5rem;
-    background: #161b22;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.7);
-    transition: box-shadow 0.3s ease;
-  }
-  .tutorial:hover {
-    box-shadow: 0 4px 12px rgb(24 26 27 / 0.9);
-  }
-  .tutorial h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: #c9d1d9;
-  }
-  .tutorial p {
-    color: #8b949e;
-    font-size: 1rem;
-  }
-
-  /* Downloads section */
-  .downloads {
-    margin-top: 3rem;
-  }
-  .downloads h2 {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    color: #c9d1d9;
-  }
-  .download-link {
-    display: inline-block;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #238636;
-    color: white;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  .download-link:hover {
-    background-color: #2ea043;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    body {
-      flex-direction: column;
-    }
-    .sidebar {
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid #30363d;
-      padding: 1rem 1rem;
-    }
-    .main-content {
-      padding: 1.5rem 1rem;
-      max-width: 100%;
-    }
   }
 </style>
 </head>
@@ -204,19 +21,15 @@
   <nav class="sidebar">
     <h2>Menu</h2>
 
-    <!--
-      Sidebar dropdown block
-      To add a new dropdown, copy this block and update title + items
-    -->
     <div class="menu-item dropdown" onclick="toggleDropdown(this)">
       <div class="dropdown-title">
         OOP
         <span class="caret">▶</span>
       </div>
       <ul>
-        <li>Classes</li>
-        <li>Inheritance</li>
-        <li>Polymorphism</li>
+        <li data-target="classes" onclick="showContent(event)">Classes</li>
+        <li data-target="inheritance" onclick="showContent(event)">Inheritance</li>
+        <li data-target="polymorphism" onclick="showContent(event)">Polymorphism</li>
       </ul>
     </div>
 
@@ -226,43 +39,102 @@
         <span class="caret">▶</span>
       </div>
       <ul>
-        <li>Probability Basics</li>
-        <li>Distributions</li>
-        <li>Sampling</li>
+        <li data-target="probability" onclick="showContent(event)">Probability Basics</li>
+        <li data-target="distributions" onclick="showContent(event)">Distributions</li>
+        <li data-target="sampling" onclick="showContent(event)">Sampling</li>
       </ul>
     </div>
 
-    <!-- Example static link (uncomment if needed) -->
-    <!-- <a href="https://www.instagram.com/raufsemi" target="_blank" class="credit">by @raufsemi</a> -->
   </nav>
 
   <main class="main-content">
     <h1>Arkib buat diri dan rakan-rakan</h1>
     <h6><a href="https://www.instagram.com/raufsemi" target="_blank">by @raufsemi</a></h6>
 
-    <!--
-      Tutorial block
-      To add a new tutorial, copy this block and update title + content
-    -->
-    <article class="tutorial">
-      <h2>How to Build a Website</h2>
-      <p>Learn the basics of HTML, CSS, and JavaScript in this step-by-step guide to creating your first webpage.</p>
-    </article>
-
-    <article class="tutorial">
-      <h2>Understanding Git and GitHub</h2>
-      <p>This tutorial walks you through version control, collaborating on projects, and pushing code to GitHub.</p>
-    </article>
-
-    <section class="downloads">
-      <h2>Downloadable Resources</h2>
-      <a href="Exercise Chapter 3 - Sampling  Estimation ANSWER.pdf" class="download-link" download>Exercise Chapter 3 with Answers</a>
+    <!-- All tutorial contents hidden by default, only one shown at a time -->
+    <section id="classes" class="tutorial-content">
+      <article class="tutorial active">
+        <h2>Classes</h2>
+        <p>Learn about classes, their properties, methods, and how to use them to create objects in OOP.</p>
+      </article>
     </section>
+
+    <section id="inheritance" class="tutorial-content">
+      <article class="tutorial">
+        <h2>Inheritance</h2>
+        <p>Understand how classes can inherit properties and behaviors from other classes.</p>
+      </article>
+    </section>
+
+    <section id="polymorphism" class="tutorial-content">
+      <article class="tutorial">
+        <h2>Polymorphism</h2>
+        <p>Explore how objects can take on many forms through polymorphism.</p>
+      </article>
+    </section>
+
+    <section id="probability" class="tutorial-content">
+      <article class="tutorial">
+        <h2>Probability Basics</h2>
+        <p>Introduction to probability theory and its applications.</p>
+      </article>
+    </section>
+
+    <section id="distributions" class="tutorial-content">
+      <article class="tutorial">
+        <h2>Distributions</h2>
+        <p>Learn about common probability distributions and their characteristics.</p>
+      </article>
+    </section>
+
+    <section id="sampling" class="tutorial-content">
+      <article class="tutorial">
+        <h2>Sampling</h2>
+        <p>Understand sampling methods and how samples represent populations.</p>
+      </article>
+    </section>
+
+    <!-- Optionally, a default "welcome" or "home" section -->
+    <section id="home" class="tutorial-content active">
+      <article class="tutorial">
+        <h2>Welcome!</h2>
+        <p>Select a topic from the sidebar to view the tutorial content here.</p>
+      </article>
+    </section>
+
   </main>
 
   <script>
+    // Toggle dropdown menus in sidebar
     function toggleDropdown(element) {
       element.classList.toggle('active');
+    }
+
+    // Show content based on sidebar item clicked
+    function showContent(event) {
+      event.stopPropagation();  // Prevent triggering dropdown toggle
+      
+      // Remove 'active' class from all tutorial-content sections
+      document.querySelectorAll('.tutorial-content').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Get the target content ID from clicked <li>
+      const targetId = event.target.getAttribute('data-target');
+
+      // Show the target content
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      // Optionally, you can also highlight the active sidebar item here
+      document.querySelectorAll('.sidebar ul li').forEach(li => {
+        li.style.color = '#8b949e';  // reset color
+        li.style.fontWeight = 'normal';
+      });
+      event.target.style.color = '#58a6ff'; // active color
+      event.target.style.fontWeight = '600';
     }
   </script>
 </body>
