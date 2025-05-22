@@ -1,75 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skill Tutorials Blog</title>
-  <style>
-    /* ... your existing styles ... */
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Skill Tutorials Blog</title>
+<style>
+  /* Reset & base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background: #fff;
+    color: #24292e;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    border-right: 1px solid #e1e4e8;
+    padding: 1.5rem 1.25rem;
+    background: #fafbfc;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .sidebar h2 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #24292e;
+  }
+
+  /* Dropdown container */
+  .dropdown {
+    cursor: pointer;
+    user-select: none;
+  }
+  .dropdown-title {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    color: #0366d6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dropdown-title:hover {
+    text-decoration: underline;
+  }
+
+  /* Caret icon */
+  .caret {
+    transition: transform 0.3s ease;
+    font-size: 0.75rem;
+  }
+  .dropdown.active .caret {
+    transform: rotate(90deg);
+  }
+
+  /* Dropdown list */
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+    display: none;
+  }
+  .dropdown.active ul {
+    display: block;
+  }
+  ul li {
+    padding: 0.25rem 0;
+    color: #57606a;
+    font-size: 0.9rem;
+  }
+  ul li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* Instagram credit in sidebar */
+  .sidebar a.credit {
+    font-size: 0.875rem;
+    color: #57606a;
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e4e8;
+  }
+  .sidebar a.credit:hover {
+    text-decoration: underline;
+  }
+
+  /* Main content */
+  .main-content {
+    flex: 1;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .main-content h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .main-content h6 {
+    color: #6a737d;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  .main-content h6 a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+  .main-content h6 a:hover {
+    text-decoration: underline;
+  }
+
+  /* Tutorial cards */
+  .tutorial {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(27 31 35 / 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  .tutorial:hover {
+    box-shadow: 0 4px 12px rgb(27 31 35 / 0.15);
+  }
+  .tutorial h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #24292e;
+  }
+  .tutorial p {
+    color: #57606a;
+    font-size: 1rem;
+  }
+
+  /* Downloads section */
+  .downloads {
+    margin-top: 3rem;
+  }
+  .downloads h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  .download-link {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #0366d6;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .download-link:hover {
+    background-color: #0356b6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #e1e4e8;
+      padding: 1rem 1rem;
+    }
+    .main-content {
+      padding: 1.5rem 1rem;
+      max-width: 100%;
+    }
+  }
+</style>
 </head>
 <body>
-  <div class="sidebar">
+  <nav class="sidebar">
     <h2>Menu</h2>
 
-    <!-- 
-      Sidebar dropdown item
-      To add a new dropdown section, copy this entire block and update the title and list items:
+    <!--
+      Sidebar dropdown block
+      To add a new dropdown, copy this block and update title + items
     -->
     <div class="menu-item dropdown" onclick="toggleDropdown(this)">
-      <div class="dropdown-title">OOP</div>
+      <div class="dropdown-title">
+        OOP
+        <span class="caret">▶</span>
+      </div>
       <ul>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
+        <li>Classes</li>
+        <li>Inheritance</li>
+        <li>Polymorphism</li>
       </ul>
     </div>
 
-    <!--
-      Add more dropdown sections below by copying the above block
-      and changing the title and list items accordingly.
-    -->
-
     <div class="menu-item dropdown" onclick="toggleDropdown(this)">
-      <div class="dropdown-title">STATISTICS & PROBABILITIES</div>
+      <div class="dropdown-title">
+        STATISTICS & PROBABILITIES
+        <span class="caret">▶</span>
+      </div>
       <ul>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
+        <li>Probability Basics</li>
+        <li>Distributions</li>
+        <li>Sampling</li>
       </ul>
     </div>
 
     <!-- Static link example -->
-    <div class="menu-item">
-      <a href="https://www.instagram.com/raufsemi" target="_blank" style="color:#ccc;">by @raufsemi</a>
-    </div>
-  </div>
+    <a href="https://www.instagram.com/raufsemi" target="_blank" class="credit">by @raufsemi</a>
+  </nav>
 
-  <div class="main-content">
+  <main class="main-content">
     <h1>Arkib buat rakan-rakan</h1>
     <h6><a href="https://www.instagram.com/raufsemi" target="_blank">by @raufsemi</a></h6>
 
     <!--
-      Tutorial item
-      To add a new tutorial, copy this entire block below and update the title and description:
+      Tutorial block
+      To add a new tutorial, copy this block and update title + content
     -->
-    <div class="tutorial">
+    <article class="tutorial">
       <h2>How to Build a Website</h2>
       <p>Learn the basics of HTML, CSS, and JavaScript in this step-by-step guide to creating your first webpage.</p>
-    </div>
+    </article>
 
-    <!-- Add more tutorials below by copying the above block -->
-
-    <div class="tutorial">
+    <article class="tutorial">
       <h2>Understanding Git and GitHub</h2>
       <p>This tutorial walks you through version control, collaborating on projects, and pushing code to GitHub.</p>
-    </div>
+    </article>
 
-    <div class="downloads">
+    <section class="downloads">
       <h2>Downloadable Resources</h2>
       <a href="Exercise Chapter 3 - Sampling  Estimation ANSWER.pdf" class="download-link" download>Exercise Chapter 3 with Answers</a>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script>
     function toggleDropdown(element) {
