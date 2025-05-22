@@ -5,164 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skill Tutorials Blog</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      display: flex;
-      min-height: 100vh;
-      background: #f0f2f5;
-    }
-
-    .sidebar {
-      width: 250px;
-      background: #2c3e50;
-      color: white;
-      padding: 1rem;
-    }
-
-    .sidebar h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .menu-item {
-      margin-bottom: 1rem;
-    }
-
-    .dropdown {
-      background: #34495e;
-      border-radius: 5px;
-      padding: 0.5rem;
-      cursor: pointer;
-    }
-
-    .dropdown:hover {
-      background: #3d566e;
-    }
-
-    .dropdown ul {
-      list-style: none;
-      padding-left: 1rem;
-      display: none;
-    }
-
-    .dropdown.active ul {
-      display: block;
-    }
-
-    .dropdown ul li {
-      padding: 0.25rem 0;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .main-content h1 {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .tutorial {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .downloads {
-      margin-top: 2rem;
-    }
-
-    .downloads h2 {
-      margin-bottom: 1rem;
-    }
-
-    .download-link {
-      display: inline-block;
-      margin-right: 1rem;
-      margin-bottom: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #3498db;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .download-link:hover {
-      background: #2980b9;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .main-content {
-        padding: 1rem;
-      }
-    }
+    /* ... your existing styles ... */
   </style>
 </head>
 <body>
   <div class="sidebar">
     <h2>Menu</h2>
+
+    <!-- 
+      Sidebar dropdown item
+      To add a new dropdown section, copy this entire block and update the title and list items:
+    -->
     <div class="menu-item dropdown" onclick="toggleDropdown(this)">
-    <a href="https://www.instagram.com/raufsemi" target="_blank">by @raufsemi</a>
+      <div class="dropdown-title">OOP</div>
       <ul>
         <li>Test</li>
         <li>Test</li>
         <li>Test</li>
       </ul>
-
-
-
-  <div class="menu-item dropdown" onclick="toggleDropdown(this)">
-    OOP
-      <ul>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-      </ul>
-
-
-
-      <div class="menu-item dropdown" onclick="toggleDropdown(this)">
-    STATISTIK & PROBABILITIES
-      <ul>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-      </ul>
-
-        
-    
-
-      
     </div>
-    <!-- You can add more dropdowns or items here -->
+
+    <!--
+      Add more dropdown sections below by copying the above block
+      and changing the title and list items accordingly.
+    -->
+
+    <div class="menu-item dropdown" onclick="toggleDropdown(this)">
+      <div class="dropdown-title">STATISTICS & PROBABILITIES</div>
+      <ul>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+      </ul>
+    </div>
+
+    <!-- Static link example -->
+    <div class="menu-item">
+      <a href="https://www.instagram.com/raufsemi" target="_blank" style="color:#ccc;">by @raufsemi</a>
+    </div>
   </div>
 
   <div class="main-content">
-    <h1>Arkib buat rakan-rakan </h1>
-    <h6><a href="https://www.instagram.com/raufsemi">by @raufsemi </h6>
+    <h1>Arkib buat rakan-rakan</h1>
+    <h6><a href="https://www.instagram.com/raufsemi" target="_blank">by @raufsemi</a></h6>
 
-
+    <!--
+      Tutorial item
+      To add a new tutorial, copy this entire block below and update the title and description:
+    -->
     <div class="tutorial">
       <h2>How to Build a Website</h2>
       <p>Learn the basics of HTML, CSS, and JavaScript in this step-by-step guide to creating your first webpage.</p>
     </div>
+
+    <!-- Add more tutorials below by copying the above block -->
 
     <div class="tutorial">
       <h2>Understanding Git and GitHub</h2>
@@ -170,10 +66,8 @@
     </div>
 
     <div class="downloads">
-     <h2>Downloadable Resources</h2>
-
-<a href="Exercise Chapter 3 - Sampling  Estimation ANSWER.pdf" class="download-link" download>Excercise Chapter 3 with Answers</a>
-
+      <h2>Downloadable Resources</h2>
+      <a href="Exercise Chapter 3 - Sampling  Estimation ANSWER.pdf" class="download-link" download>Exercise Chapter 3 with Answers</a>
     </div>
   </div>
 
