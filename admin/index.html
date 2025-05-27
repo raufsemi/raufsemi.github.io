@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Include the styles for the Netlify CMS UI, after your own styles -->
-  <!-- <link  rel="stylesheet" href="https://unpkg.com/netlify-cms@^1.0.2/dist/cms.css" /> -->
-  <!-- Identity widget. Must be in head -->
-  <!-- <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
   <title>Content Manager</title>
+
+  <!-- ✅ Tells Netlify CMS where the config file is -->
+  <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml" />
 </head>
 <body>
-    <script>
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", function (user) {
-            if (!user) {
-              window.netlifyIdentity.on("login", function () {
-                document.location.href = "/admin/";
-              });
-            }
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
           });
         }
-    </script> 
-  <!-- Include the script that builds the page and powers Netlify CMS -->
-    <!-- <script src="https://unpkg.com/netlify-cms@1.0.2/dist/cms.js"></script> -->
-    <script src="./bundle.js"></script>
+      });
+    }
+  </script>
+
+  <!-- ✅ Loads Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>
