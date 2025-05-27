@@ -1,4 +1,6 @@
 ---
-title: TESTING
+title: "My Cool Post"
+date: "2025-05-28"
+tags: ["html", "blog"]
 ---
-HAI SEMUA
+This is the content of the blog post.
