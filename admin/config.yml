@@ -1,8 +1,18 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Content Manager</title>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </head>
-  <body></body>
-</html>
+backend:
+  name: github
+  repo: raufsemi/raufsemi.github.io  # change this to your repo
+  branch: main  # or whichever branch you use
+
+media_folder: "static/images"   # folder where uploaded images go
+public_folder: "/images"        # URL path to images
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "posts"            # folder where blog posts live
+    create: true               # allow creating new posts
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
