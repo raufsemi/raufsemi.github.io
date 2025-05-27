@@ -1,20 +1,19 @@
 backend:
   name: github
   repo: raufsemi/raufsemi.github.io  # your GitHub repo
-  branch: main                       # your default branch
-  site_domain: raufsemi.com          # your custom domain
-  publish_mode: editorial_workflow   # enables editorial workflow (optional)
+  branch: main     
+  publish_mode: editorial_workflow  
 
-media_folder: "static/images/uploads"   # where images will be stored in your repo
-public_folder: "/images/uploads"        # URL path prefix to your images
+  
+media_folder: "static/images/uploads"   # images stored here in repo
+public_folder: "/images/uploads"        # url path for images
 
 collections:
   - name: "posts"
     label: "New Post"
-    folder: "posts"                     # folder where your posts will live
+    folder: "posts"
     create: true
-    # I removed the language filter since you didn't mention multi-language
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"  # filenames like 2025-05-28-my-post.md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "slug", label: "Slug", widget: "string" }
